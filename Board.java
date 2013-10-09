@@ -66,14 +66,12 @@ public class Board {
     public void solve(){
         calculateAllPossibilities();
         while(!isSolved()){
-            //System.out.println(toString());
             fillNumbers();
         }
       
     }
     
     private void fillNumbers(){
-        //System.out.println(toString());
         int easy_count = setEasyValues();
         if(easy_count == 0){
             int hard_count = setHardValues();
@@ -85,7 +83,6 @@ public class Board {
     }
     
     public boolean recursion_solve(int i, int j, Tile[][] tiles){
-        //System.out.println(toString());
         rec_count++;
         if(i == 9){
             i = 0;
@@ -108,44 +105,10 @@ public class Board {
             
         }
         
-        /*
-        for(int val = 1; val <= 9 ; val++){
-            if(legal(i,j,val,tiles)){
-                tiles[i][j].setValue(val);
-                if(recursion_solve(i+1, j, tiles)){
-                    return true;
-                }
-            }
-        }
-        */
-        tiles[i][j].setValue(0);
+
         return false;
     }
     
-    private boolean legal(int i, int j, int val, Tile[][] tiles){
-        for(int k = 0; k < 9 ; k++){
-            if(val==tiles[k][j].value()){
-                return false;
-            }
-        }
-        
-        for(int k = 0; k < 9; k++){
-            if(val == tiles[i][k].value()){
-                return false;
-            }
-        }
-        
-        int box_row_offset = (i/3)*3;
-        int box_col_offset = (j/3)*3;
-        for(int k = 0 ; k < 3; k++){
-            for(int m = 0; m < 3 ; m++){
-                if(val == tiles[box_row_offset+k][box_col_offset+m].value()){
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
     private int setHardValues(){
         int count = 0;
         count += extrapolateValues(myRows);

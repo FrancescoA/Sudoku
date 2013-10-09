@@ -137,11 +137,8 @@ public class Board {
                 cur_poss.addAll(tile.possibilities());
                 for(Integer ps : cur_poss){
                     if(!other_pos.contains(ps)){
-                        //System.out.println(tile.possibilities());
-                        //System.out.println(ps);
                         tile.setValue(ps);
                         count++;
-                        //System.out.println(toString());
                     }
                 }  
             }
@@ -157,7 +154,6 @@ public class Board {
             for(int j = 0 ; j < myTiles[i].length ; j++){
                 Tile tile = myTiles[i][j];
                 if(tile.possibilities().size() == 1 && tile.value() == 0){
-                    //System.out.println(tile.possibilities().get(0));
                     count++;
                     tile.setValue(tile.possibilities().get(0));
                 }
